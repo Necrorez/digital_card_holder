@@ -1,0 +1,128 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6op6dpj0ra3y"]
+
+[ext_resource type="Script" path="res://core.gd" id="1_hssro"]
+[ext_resource type="Texture2D" uid="uid://lk4pt8ofrxv8" path="res://textures/ui_kenney/green_button04.png" id="2_3ux7g"]
+[ext_resource type="Script" path="res://scripts/interactive_scroll_rect.gd" id="3_xgb86"]
+[ext_resource type="PackedScene" uid="uid://b15p3u060nhup" path="res://nodes/interactive_scroll_item.tscn" id="4_lxefb"]
+
+[node name="Core" type="Node"]
+script = ExtResource("1_hssro")
+
+[node name="Next" type="TextureButton" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = -380.0
+offset_right = 494.0
+offset_bottom = -262.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_3ux7g")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Next"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "Next"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Previous" type="TextureButton" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -498.0
+offset_top = -380.0
+offset_right = -42.0
+offset_bottom = -262.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_3ux7g")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Previous"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "Previous"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Button2" type="TextureButton" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -322.0
+offset_top = -184.0
+offset_right = 322.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_3ux7g")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "Add new card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractiveScrollRect" type="ColorRect" parent="." node_paths=PackedStringArray("next_button", "previous_button")]
+clip_children = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 66.0
+offset_top = -1450.0
+offset_right = -74.0
+offset_bottom = -482.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_xgb86")
+next_button = NodePath("../Next")
+previous_button = NodePath("../Previous")
+
+[node name="CardContainer" type="HBoxContainer" parent="InteractiveScrollRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InteractiveScrollItem" parent="InteractiveScrollRect/CardContainer" instance=ExtResource("4_lxefb")]
+layout_mode = 2
+
+[node name="InteractiveScrollItem2" parent="InteractiveScrollRect/CardContainer" instance=ExtResource("4_lxefb")]
+layout_mode = 2
